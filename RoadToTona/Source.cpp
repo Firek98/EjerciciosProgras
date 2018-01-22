@@ -220,7 +220,6 @@ int& magic2(int * a, int * b) {
 }
 // a) Qué esta devolviendo?
 
-
 // 4) Haz una función que dado un puntero a int
 // y sabiendo que en *i esta el primer elemento
 // de una array cuyo último elemento es 0,
