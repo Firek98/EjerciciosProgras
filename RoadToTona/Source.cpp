@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <string>
+#include <ctime>
 //// Exercise 0
 //Una función dumpArrayInt que dada una array  y su tamaño como parámetros
 //imprima los elementos de la array en el formato [ 0, 1, 2, 3]
@@ -16,7 +17,6 @@ void dumpArrayInt(int arr[], int size)
 //Una función swapInArray que dada una array de enteros y dos índices
 //intercambie los elementos que hay en esos índices
 //bonus: hazlo sin crear ninguna variable más
-
 void swapInArray(int arr[], int i1, int i2)
 {
 	arr[i1] += arr[i2];
@@ -175,52 +175,38 @@ void LessFrequent(int arr[][2][2], int size)
 		}
 	}
 }
-// Crea una función que lea palabra a palabra un archivo y imprima
-// la primera y última letra de cada palabra así como el tamaño de la misma.
+////////////////////////////////////////////////////////////
+//////////////// TONA PRIMER CURSO /////////////////////////
+////////////////////////////////////////////////////////////
 
-// Crea una función que lea un mensaje de entrada estándar (cin)
-// y escriba en un archivo los carácteres ascii que la componen,
-// separados por comas. (ej: AAA 65,65,65)
+// A02 
 
-// Investiga la función string::substr y string::append.
-// Crea una función que lea por entrada estandar dos strings utilizando cin
-// la función tendrá que imprimir una palabra compuesta por la mitad de los
-// carácteres de cada una de las palabras.
+enum EnemyType
+{
+	zombie, vampire, ghost, witch, MAX
+};
 
-// Crea una función que transforme todos los elementos de una string
-// que sean carácteres en minúscula a mayúscula.
+std::string nombres[5]{ "paco", "marc", "mar", "ramon"};
 
-// Crea una función log, que reciba una string, la función
-// debe añadirla al final de un fichero sin borrarla
+struct Enemy
+{
+	EnemyType type;
+	std::string name;
+	int health;
+	bool operator()(Enemy a, Enemy b)
+	{
+		if (a.name == b.name && a.type == b.type)
+		{
+			return true;
+		}
+		else return false;
+	}
+};
 
-// Crea otra función que lea un archivo codificado en ascii,
-// (el descrito en el apartado anterior) y imprima por pantalla
-// el mensaje original
+Enemy CreateRandomEnemy()
+{
+	Enemy enemigo;
 
-//// Ejercicios de punteros
-
-// 1) Suponiendo que compila correctamente, en la expresión 
-int b = 5;
-int * a = &b;
-// a) Qué tipo es b y cuanto vale?
-// b) Qué tipo es a?
-// c) Qué hace &b?
-// d) Cómo podríamos ver el valor de a?
-// e) Cómo podríamos ver el valor al que apunta a?
-
-// 2) Qué hace la siguiente función
-void magic(int * a, int * b) {
-	*b = a[1];
+	enemigo.health = rand() % 301;
+	enemigo.type = static_cast<EnemyType>(rand() % MAX);
 }
-
-// 3) Dada la siguiente función:
-int& magic2(int * a, int * b) {
-	b = a + 1;
-	return *b;
-}
-// a) Qué esta devolviendo?
-
-// 4) Haz una función que dado un puntero a int
-// y sabiendo que en *i esta el primer elemento
-// de una array cuyo último elemento es 0,
-// imprima todos los elementos de la array.
